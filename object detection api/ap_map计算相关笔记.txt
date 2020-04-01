@@ -1,0 +1,11 @@
+
+1、对每张图片进行所有类别的预测，得到一个cxkx1的array，称为scorces，c为类别数，k为所有bounding box的属于类别c的预测值。
+     同步得到tp_fp_label（scores对应的bound box属于tp还是fp，使用boolean表示，true/falase）
+
+2、合并所有图片的检测结果，按照类别进行合并，得到一个cx(k*n)x1的array，名为scores_per_class[]。c为类别，n为图片数，k为对应图片bounding box的预测值
+     同时也对tp_fp_label进行相同数据结构合并，名为tp_fp_label_per_class[]
+
+3、对scorces进行降序排序，并相应的根据scores下标调整tp_fp_label。然后对每个scorces值计算一个recall，假设有我们检测出N个样本，
+     其中有M个有正例，对N个样本按照scores进行排序，然后在每个正例的位置进行一次recall计算（计算M次recall），然后对这M个precision值取
+     平均值，即得到average precision值。
+     参考：https://blog.csdn.net/qq_41994006/article/details/81051150
