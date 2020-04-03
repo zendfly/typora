@@ -10,4 +10,7 @@ tf使用图（graph）来表示计算任务，使用seesion（会话）的上下
 
 ## GraphDef
 
-GraphDef是Graph的序列化表示，从python代码描述的Graph中序列化得到的图就叫做GraphDef。
+GraphDef是Graph的序列化表示，使用python代码对Graph进行描述表示，会得到一个序列化的图，叫GraphDef。
+
+
+
